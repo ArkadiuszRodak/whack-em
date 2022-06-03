@@ -1,24 +1,13 @@
 <template>
-  <div class="container h-screen">
-    <img alt="Vue logo" src="./assets/logo.png" class="mx-auto" />
-    <moles-grid :level="level" />
+  <div id="whack_em_app" class="container h-screen text-stone-800">
+    <div id="logotype" class="text-center text-6xl font-bold pt-10 pb-10">Whack'Em!</div>
+    <hr class="border-t-2 border-stone-800 pb-10" />
+    <router-view />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import MolesGrid from '@/components/organisms/MolesGrid.vue';
-import { GameLevel } from './types';
-
-export default defineComponent({
-  name: 'WhackEm',
-  components: {
-    MolesGrid,
-  },
-  setup() {
-    const level = GameLevel.Normal;
-
-    return { level };
-  },
-});
-</script>
+<style>
+#whack_em_app {
+  font-family: 'Roboto Slab', Courier, monospace;
+}
+</style>

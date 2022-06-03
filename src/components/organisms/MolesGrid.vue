@@ -1,6 +1,7 @@
 <template>
   <div class="grid gap-4" :class="grid.className">
-    <div v-for="singleMole in Array(grid.size).keys()" :key="`single-mole-${singleMole}`">
+    <div v-for="index in grid.size" :key="`single-mole-${index}`">
+      {{ index }}
       <single-mole />
     </div>
   </div>
@@ -16,7 +17,7 @@ export default defineComponent({
   name: 'MolesGrid',
   props: {
     level: {
-      type: Object as PropType<GameLevel>,
+      type: Number as PropType<GameLevel>,
       required: true,
     },
   },
