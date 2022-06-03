@@ -6,17 +6,17 @@ import OptionsView from '../views/OptionsView.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
+    name: 'Menu',
     component: HomeView,
   },
   {
     path: '/game',
-    name: 'game',
+    name: "Let's play",
     component: GameView,
   },
   {
     path: '/options',
-    name: 'opitons',
+    name: 'Options',
     component: OptionsView,
   },
 ];

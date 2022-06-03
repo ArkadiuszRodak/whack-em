@@ -5,7 +5,7 @@ module.exports = defineConfig({
   pages: {
     index: {
       entry: './src/main.ts',
-      title: 'Whack\'Em!',
+      title: 'Whack\'em!',
     },
   },
 });

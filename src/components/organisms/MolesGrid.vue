@@ -1,7 +1,6 @@
 <template>
-  <div class="grid gap-4" :class="grid.className">
+  <div class="grid gap-4 h-full bg-red-300" :class="grid.className" style="height: 100vw">
     <div v-for="index in grid.size" :key="`single-mole-${index}`">
-      {{ index }}
       <single-mole />
     </div>
   </div>
