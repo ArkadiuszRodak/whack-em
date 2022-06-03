@@ -1,16 +1,8 @@
 <template>
   <div>
-    <div class="flex items-center justify-between">
-      <div class="text-5xl">Options</div>
-      <router-link
-        class="text-center border-2 border-stone-800 rounded text-xl font-bold py-2 px-4"
-        to="/"
-      >
-        BACK
-      </router-link>
-    </div>
+    <page-title title="Options" />
 
-    <div class="flex items-baseline mt-10">
+    <div class="flex items-baseline">
       <div class="text-3xl text-center mr-4">LEVEL</div>
       <hr class="grow border-stone-800 border-t-2" />
     </div>
@@ -60,8 +52,10 @@
 import { defineComponent } from 'vue';
 import { getLevel, setLevel } from '@/logic/useLevel';
 import { GameLevel } from '@/types';
+import PageTitle from '@/components/atoms/PageTitle.vue';
 
 export default defineComponent({
+  components: { PageTitle },
   name: 'OptionsView',
   setup() {
     return { getLevel, setLevel, GameLevel };
