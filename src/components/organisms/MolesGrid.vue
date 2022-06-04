@@ -1,7 +1,7 @@
 <template>
-  <div id="main_content" class="flex h-full">
+  <div id="main_content" class="flex h-full" style="max-height: 100%;">
     <div
-      class="grid gap-4 self-end mb-10"
+      class="grid gap-4 self-end mx-auto"
       :class="['grid-cols-' + grid.xs]"
       :style="{ height: gridSquareSize, width: gridSquareSize }"
     >
@@ -15,24 +15,16 @@
 <script lang="ts">
 import {
   defineComponent,
-  PropType,
   onMounted,
   ref,
 } from 'vue';
-import { GameLevel } from '@/types';
-import SingleMole from '../atoms/SingleMole.vue';
-import { getLevelDef } from '@/logic/useLevel';
+import SingleMole from '../molecules/SingleMole.vue';
+import { getLevelDef, getLevel } from '@/logic/useLevel';
 
 export default defineComponent({
   components: { SingleMole },
   name: 'MolesGrid',
-  props: {
-    level: {
-      type: Number as PropType<GameLevel>,
-      required: true,
-    },
-  },
-  setup(props) {
+  setup() {
     const gridSquareSize = ref('0px');
 
     const setGridSquareSize = (): void => {
@@ -50,7 +42,7 @@ export default defineComponent({
       window.addEventListener('resize', setGridSquareSize);
     });
 
-    return { grid: getLevelDef(props.level), gridSquareSize };
+    return { grid: getLevelDef(getLevel()), gridSquareSize };
   },
 });
 </script>
