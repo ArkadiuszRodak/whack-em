@@ -1,5 +1,5 @@
 <template>
-  <moles-grid :level="getLevel()" />
+  <moles-grid :level="level" />
 </template>
 
 <script lang="ts">
@@ -13,7 +13,7 @@ export default defineComponent({
     MolesGrid,
   },
   setup() {
-    return { getLevel };
+    return { level: getLevel() };
   },
 });
 </script>

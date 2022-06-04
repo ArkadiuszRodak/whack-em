@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'jit',
   content: ['./public/**/*.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -19,5 +20,10 @@ module.exports = {
       },
     },
   },
+  safelist: [ // always include classes for dynamic styling
+    'grid-cols-2',
+    'grid-cols-3',
+    'grid-cols-4',
+  ],
   plugins: [],
 };

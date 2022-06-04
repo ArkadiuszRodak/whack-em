@@ -1,15 +1,27 @@
 <template>
-  <div class="grid gap-4 h-full bg-red-300" :class="grid.className" style="height: 100vw">
-    <div v-for="index in grid.size" :key="`single-mole-${index}`">
-      <single-mole />
+  <div id="main_content" class="flex h-full">
+    <div
+      class="grid gap-4 self-end mb-10"
+      :class="['grid-cols-' + grid.xs]"
+      :style="{ height: gridSquareSize, width: gridSquareSize }"
+    >
+      <div v-for="index in grid.size" :key="`single-mole-${index}`">
+        <single-mole />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import { GameLevel, CalculatedGrid } from '@/types';
+import {
+  defineComponent,
+  PropType,
+  onMounted,
+  ref,
+} from 'vue';
+import { GameLevel } from '@/types';
 import SingleMole from '../atoms/SingleMole.vue';
+import { getLevelDef } from '@/logic/useLevel';
 
 export default defineComponent({
   components: { SingleMole },
@@ -21,36 +33,24 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const makeGrid = (level: GameLevel): CalculatedGrid => {
-      switch (level) {
-        case GameLevel.Easy:
-          return {
-            size: 4,
-            xs: 2,
-            ys: 2,
-            className: 'grid-cols-2',
-          };
-        case GameLevel.Expert:
-          return {
-            size: 16,
-            xs: 4,
-            ys: 4,
-            className: 'grid-cols-4',
-          };
-        case GameLevel.Normal:
-        default:
-          return {
-            size: 9,
-            xs: 3,
-            ys: 3,
-            className: 'grid-cols-3',
-          };
-      }
+    const gridSquareSize = ref('0px');
+
+    const setGridSquareSize = (): void => {
+      gridSquareSize.value = ((): string => {
+        const mainContentDiv = document.querySelector('#main_content');
+        const height = mainContentDiv?.clientHeight || 0;
+        const width = mainContentDiv?.clientWidth || 0;
+
+        return `${height < width ? height : width}px`;
+      })();
     };
 
-    const grid = makeGrid(props.level);
+    onMounted(() => {
+      setGridSquareSize();
+      window.addEventListener('resize', setGridSquareSize);
+    });
 
-    return { grid };
+    return { grid: getLevelDef(props.level), gridSquareSize };
   },
 });
 </script>
