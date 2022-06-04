@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-stone-400 h-full">
+  <div class="bg-stone-400 h-full rounded-full text-center">
     SingleMole
   </div>
 </template>
