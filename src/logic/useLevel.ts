@@ -1,7 +1,7 @@
 import { ref } from 'vue';
-import { GameLevel } from '@/types';
+import { GameLevel, LevelDef } from '@/types';
 
-const levelDef = {
+const levelDef: Record<GameLevel, LevelDef> = {
   [GameLevel.Easy]: {
     size: 4,
     xs: 2,
@@ -29,7 +29,7 @@ const getLevelFromLocalStorage = (): GameLevel => {
 
 const level = ref<GameLevel>(getLevelFromLocalStorage());
 
-export const getLevelDef = (lvl: GameLevel) => levelDef[lvl];
+export const getLevelDef = (lvl: GameLevel): LevelDef => levelDef[lvl];
 
 export const getLevel = (): GameLevel => level.value;
 export const setLevel = (lvl: GameLevel): void => {
