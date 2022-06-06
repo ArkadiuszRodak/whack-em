@@ -10,6 +10,7 @@
 <script lang="ts">
 import { defineComponent, watch } from 'vue';
 import { incrementScore } from '@/logic/useScore';
+import { decrementLife } from '@/logic/useLife';
 
 export default defineComponent({
   name: 'SingleMole',
@@ -24,9 +25,12 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
+    let timer: number;
+
     const whack = () => {
       if (props.modelValue) {
         incrementScore();
+        clearTimeout(timer);
         emit('update:modelValue', false);
       }
     };
@@ -35,7 +39,8 @@ export default defineComponent({
       () => props.modelValue,
       (val: boolean) => {
         if (val) {
-          setTimeout(() => {
+          timer = setTimeout(() => {
+            decrementLife();
             emit('update:modelValue', false);
           }, props.visibilityTime);
         }

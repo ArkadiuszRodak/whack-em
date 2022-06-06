@@ -1,4 +1,6 @@
 <template>
+  <game-loader @play="play()"/>
+  <game-over @game-over="gameOver()" />
   <div id="main_content" class="flex h-full" style="max-height: 100%">
     <div
       class="grid gap-4 self-end mx-auto"
@@ -13,50 +15,77 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive } from 'vue';
-import SingleMole from '../molecules/SingleMole.vue';
+import {
+  defineComponent,
+  onMounted,
+  reactive,
+} from 'vue';
 import { getLevelDef, getLevel } from '@/logic/useLevel';
-import { Grid } from '@/types';
+import { resetLife } from '@/logic/useLife';
 import { resetScore } from '@/logic/useScore';
+import GameLoader from '../atoms/GameLoader.vue';
+import SingleMole from '../molecules/SingleMole.vue';
+import { Grid } from '@/types';
+import GameOver from '../atoms/GameOver.vue';
 
 export default defineComponent({
   name: 'MolesGrid',
-  components: { SingleMole },
+  components: { SingleMole, GameLoader, GameOver },
   setup() {
+    let mainContentElement: HTMLElement | null;
+    let intervalTimer: number;
+
     const levelDef = getLevelDef(getLevel());
+
     const grid = reactive<Grid>({
       ...levelDef,
+      contentWidth: 0,
+      contentHeight: 0,
       squareSize: '0px',
       // generate object of indexes with bool value
       indexes: Array.from({ length: levelDef.size }, (_, i) => i)
         .reduce((o, key) => ({ ...o, [key]: false }), {}),
     });
 
-    // calculates responsive square size to fill the screen with grid
-    const setGridSquareSize = (): void => {
-      grid.squareSize = ((): string => {
-        const mainContentDiv = document.querySelector('#main_content');
-        const height = mainContentDiv?.clientHeight || 0;
-        const width = mainContentDiv?.clientWidth || 0;
+    const getMainContentElement = () => {
+      mainContentElement = document.querySelector('#main_content');
+      if (!mainContentElement) {
+        throw new Error('Page not loaded properly. Content not found.');
+      }
+    };
 
-        return `${height < width ? height : width}px`;
+    // calculates responsive square size to fill the screen with grid
+    const setGridSize = (): void => {
+      grid.squareSize = ((): string => {
+        grid.contentWidth = mainContentElement?.clientWidth || 0;
+        grid.contentHeight = mainContentElement?.clientHeight || 0;
+
+        return `${grid.contentHeight < grid.contentWidth ? grid.contentHeight : grid.contentWidth}px`;
       })();
     };
 
     const play = (): void => {
-      resetScore();
-      setInterval(() => {
-        grid.indexes[Math.floor(Math.random() * grid.size)] = true;
+      // wait another second after game loader closes
+      setTimeout(() => {
+        intervalTimer = setInterval(() => {
+          grid.indexes[Math.floor(Math.random() * grid.size)] = true;
+        }, 1000);
       }, 1000);
     };
 
+    const gameOver = (): void => {
+      clearInterval(intervalTimer);
+    };
+
     onMounted(() => {
-      setGridSquareSize();
-      window.addEventListener('resize', setGridSquareSize);
-      play();
+      resetScore();
+      resetLife();
+      getMainContentElement();
+      setGridSize();
+      window.addEventListener('resize', setGridSize);
     });
 
-    return { grid };
+    return { grid, play, gameOver };
   },
 });
 </script>

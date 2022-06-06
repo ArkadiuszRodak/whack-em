@@ -11,6 +11,8 @@ export interface LevelDef {
 }
 
 export interface Grid extends LevelDef {
+  contentWidth: number;
+  contentHeight: number;
   squareSize: string;
   indexes: Record<number, boolean>
 }

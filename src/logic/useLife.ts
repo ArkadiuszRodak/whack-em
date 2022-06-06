@@ -1,11 +1,14 @@
 import { ref } from 'vue';
 
-const life = ref(0);
+export const lifeAtStart = 10;
+const life = ref(lifeAtStart);
 
 export const getLife = (): number => life.value;
 export const resetLife = (): void => {
-  life.value = 10;
+  life.value = lifeAtStart;
 };
-export const decrementScore = (): void => {
-  life.value -= 1;
+export const decrementLife = (): void => {
+  if (life.value > 0) {
+    life.value -= 1;
+  }
 };

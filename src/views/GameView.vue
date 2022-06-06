@@ -1,14 +1,24 @@
 <template>
   <div class="flex flex-col h-full">
-    <div class="flex justify-between">
+    <div class="md:flex md:justify-between">
       <life-bar />
       <score-counter />
     </div>
-    <div class="grow pb-10">
+    <div class="grow mb-10 relative">
       <moles-grid />
     </div>
   </div>
 </template>
+
+<style>
+.game-overlay {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(0, 0, 0) 0%,
+    rgba(0, 188, 212, 0) 66%
+  );
+}
+</style>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
