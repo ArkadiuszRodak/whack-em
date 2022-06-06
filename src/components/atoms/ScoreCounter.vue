@@ -1,6 +1,6 @@
 <template>
-  <div class="flex justify-between mb-5">
-    <span class="text-3xl">Score</span>
+  <div class="flex justify-between mb-5 border-b-2 border-stone-800 py-2">
+    <span class="text-3xl mr-2">Score</span>
     <span v-text="getScore()" class="text-3xl" />
   </div>
 </template>

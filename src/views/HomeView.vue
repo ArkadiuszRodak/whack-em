@@ -2,6 +2,7 @@
   <nav>
     <router-link
       class="block text-center my-3 border-2 border-sky-800 rounded text-xl p-3 font-bold
+      hover:bg-stone-200
       text-sky-800"
       to="/game"
     >
@@ -9,6 +10,7 @@
     </router-link>
     <router-link
       class="block text-center my-3 border-2 border-amber-800 rounded text-xl p-3 font-bold
+      hover:bg-stone-200
       text-amber-800"
       to="/options"
     >

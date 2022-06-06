@@ -13,13 +13,15 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import MolesGrid from '@/components/organisms/MolesGrid.vue';
+import LifeBar from '@/components/atoms/LifeBar.vue';
 import ScoreCounter from '@/components/atoms/ScoreCounter.vue';
 
 export default defineComponent({
   name: 'GameView',
   components: {
-    MolesGrid,
+    LifeBar,
     ScoreCounter,
+    MolesGrid,
   },
 });
 </script>
