@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import GameView from '../views/GameView.vue';
 import OptionsView from '../views/OptionsView.vue';
+import ScoresView from '../views/ScoresView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -18,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/options',
     name: 'Options',
     component: OptionsView,
+  },
+  {
+    path: '/scores',
+    name: 'Score Board',
+    component: ScoresView,
   },
 ];
 
