@@ -7,6 +7,9 @@ module.exports = {
         '1/2': '50%',
         full: '100%',
       },
+      dropShadow: {
+        xl: '0 15px 15px rgba(0, 0, 0, 0.5)',
+      },
     },
     container: {
       center: true,
@@ -20,10 +23,18 @@ module.exports = {
       },
     },
   },
-  safelist: [ // always include classes for dynamic styling
+  safelist: [ // always include these classes for dynamic styling
     'grid-cols-2',
     'grid-cols-3',
     'grid-cols-4',
+    'text-stone-300',
+    'bg-sky-800',
+    'border-sky-800',
+    'bg-emerald-800',
+    'border-emerald-800',
+    'bg-red-800',
+    'border-red-800',
+    'border-stone-800',
   ],
   plugins: [],
 };

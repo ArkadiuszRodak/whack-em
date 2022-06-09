@@ -3,7 +3,8 @@
     <div class="text-5xl" v-text="title" />
     <router-link
       v-if="isBackBtnVisible"
-      class="text-center border-2 border-stone-800 rounded text-xl font-bold py-2 px-4"
+      class="text-center border-2 border-stone-800 rounded text-xl font-bold py-2 px-4
+      hover:bg-stone-200"
       to="/"
     >
       BACK

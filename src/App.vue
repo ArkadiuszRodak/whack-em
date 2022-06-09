@@ -5,6 +5,7 @@
       <hr class="border-t-2 border-stone-800 pb-10" />
     </div>
     <page-title />
+    <hr class="border-t-2 border-stone-800 pb-5" />
     <div class="grow">
       <router-view />
     </div>
@@ -14,6 +15,7 @@
 <style>
 #whack_em_app {
   font-family: 'Roboto Slab', Courier, monospace;
+  cursor: crosshair;
 }
 </style>
 
