@@ -25,8 +25,8 @@ import { resetLife } from '@/logic/useLife';
 import { resetScore } from '@/logic/useScore';
 import GameLoader from '../atoms/GameLoader.vue';
 import SingleMole from '../molecules/SingleMole.vue';
-import { Grid } from '@/types';
 import GameOver from '../atoms/GameOver.vue';
+import { Grid } from '@/types';
 
 export default defineComponent({
   name: 'MolesGrid',
@@ -39,8 +39,6 @@ export default defineComponent({
 
     const grid = reactive<Grid>({
       ...levelDef,
-      contentWidth: 0,
-      contentHeight: 0,
       squareSize: '0px',
       // generate object of indexes with bool value
       indexes: Array.from({ length: levelDef.size }, (_, i) => i)
@@ -57,10 +55,10 @@ export default defineComponent({
     // calculates responsive square size to fill the screen with grid
     const setGridSize = (): void => {
       grid.squareSize = ((): string => {
-        grid.contentWidth = mainContentElement?.clientWidth || 0;
-        grid.contentHeight = mainContentElement?.clientHeight || 0;
+        const width = mainContentElement?.clientWidth || 0;
+        const height = mainContentElement?.clientHeight || 0;
 
-        return `${grid.contentHeight < grid.contentWidth ? grid.contentHeight : grid.contentWidth}px`;
+        return `${height < width ? height : width}px`;
       })();
     };
 

@@ -1,12 +1,9 @@
 <template>
-  <div
-    v-show="isVisible"
-    class="absolute top-0 left-0 h-full w-full rounded-full opacity-90 game-overlay"
-  >
-    <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2
-      text-6xl text-stone-300 text-center">
-      Game Over
-    </span>
+  <div  v-show="isVisible" class="absolute top-0 left-0 h-full w-full">
+    <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2
+      w-1/2 py-5 text-center rounded-3xl drop-shadow-xl bg-red-800 text-stone-300">
+      <span class="text-7xl">Game Over</span>
+    </div>
   </div>
 </template>
 

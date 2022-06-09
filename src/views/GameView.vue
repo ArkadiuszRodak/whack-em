@@ -10,16 +10,6 @@
   </div>
 </template>
 
-<style>
-.game-overlay {
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgb(0, 0, 0) 0%,
-    rgba(0, 188, 212, 0) 66%
-  );
-}
-</style>
-
 <script lang="ts">
 import { defineComponent } from 'vue';
 import MolesGrid from '@/components/organisms/MolesGrid.vue';

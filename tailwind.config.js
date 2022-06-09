@@ -7,6 +7,9 @@ module.exports = {
         '1/2': '50%',
         full: '100%',
       },
+      dropShadow: {
+        xl: '0 15px 15px rgba(0, 0, 0, 0.5)',
+      },
     },
     container: {
       center: true,
