@@ -1,5 +1,5 @@
 <template>
-  <div  v-show="isVisible" class="absolute top-0 left-0 h-full w-full">
+  <div v-show="isVisible" class="absolute top-0 left-0 h-full w-full z-50">
     <div
       :class="{
         'bg-red-800': counter >= 3,

@@ -2,15 +2,25 @@
   <div
     @click="whack"
     @keyup.enter="whack"
-    :class="[modelValue ? 'bg-red-400' : 'bg-stone-400']"
-    class="h-full rounded-full text-center"
-  />
+    class="h-full max-h-full rounded-full text-center bg-stone-400 pb-full relative"
+  >
+    <div
+      :style="[modelValue ? randomImage : '']"
+      class="absolute inset-0 h-full w-full bg-no-repeat bg-center bg-contain"
+    />
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from 'vue';
+import {
+  defineComponent,
+  watch,
+  ref,
+  computed,
+} from 'vue';
 import { incrementScore } from '@/logic/useScore';
 import { decrementLife } from '@/logic/useLife';
+import { getMode } from '@/logic/useMode';
 
 export default defineComponent({
   name: 'SingleMole',
@@ -25,6 +35,11 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
+    const randomImageId = ref(1);
+    const randomImage = computed(
+      () => `background-image: url('/img/${getMode()}/${randomImageId.value}.png')`,
+    );
+
     let timer: number;
 
     const whack = () => {
@@ -47,7 +62,7 @@ export default defineComponent({
       },
     );
 
-    return { whack };
+    return { randomImage, whack };
   },
 });
 </script>

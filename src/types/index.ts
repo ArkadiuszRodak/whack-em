@@ -1,3 +1,10 @@
+export enum GameMode {
+  Zombies = 'zombies',
+  Ghosts = 'ghosts',
+  Politico = 'politico',
+  Shooter = 'shooter',
+}
+
 export enum GameLevel {
   Easy,
   Normal,
