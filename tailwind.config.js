@@ -28,13 +28,12 @@ module.exports = {
       pattern: /grid-cols-(2|3|4)/,
     },
     {
-      pattern: /text-stone-(300|700)/,
+      pattern: /(border|text)-stone-(300|700)/,
     },
     {
-      pattern: /(bg|border)-(sky|emerald|red)-300/,
+      pattern: /(bg|border)-(sky|emerald|red)-500/,
       variants: ['hover'],
     },
-    'border-stone-300',
   ],
   plugins: [],
 };

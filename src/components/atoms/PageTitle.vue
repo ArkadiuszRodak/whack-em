@@ -6,7 +6,7 @@
     <router-link
       v-if="isBackBtnVisible"
       class="text-center border-2 border-stone-300 rounded text-xl font-bold py-2 px-4
-      hover:bg-stone-500"
+          hover:bg-stone-300 hover:text-stone-700"
       to="/"
     >
       BACK
