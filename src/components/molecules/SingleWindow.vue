@@ -7,7 +7,7 @@
     <transition name="slide-fade">
       <div
         v-show="modelValue"
-        :style="[randomImage]"
+        :style="[randomImg]"
         class="absolute inset-0 h-full w-full bg-no-repeat bg-center bg-contain"
       />
     </transition>
@@ -39,9 +39,9 @@ export default defineComponent({
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-    const randomImageId = ref(1);
-    const randomImage = computed(
-      () => `background-image: url('/img/${getMode()}/${randomImageId.value}.png')`,
+    const randomImgId = ref(1);
+    const randomImg = computed(
+      () => `background-image: url('/img/${getMode()}/${randomImgId.value}.png')`,
     );
 
     let timer: number;
@@ -66,7 +66,7 @@ export default defineComponent({
       },
     );
 
-    return { randomImage, whack };
+    return { randomImg, whack };
   },
 });
 </script>

@@ -1,18 +1,18 @@
 <template>
-  <div class="container max-h-screen h-screen flex flex-col overflow-hidden">
+  <div class="flex flex-col max-h-screen h-screen overflow-hidden">
     <page-title class="mt-10">
       Whack'em!
     </page-title>
-    <div class="bg-stone-700 h-5 rounded-t-full overflow-hidden border-l-8 border-stone-600" />
-    <div class="grid gap-4 p-4 grid-cols-2 bg-red-900 border-l-8 border-red-800">
-      <div class="building-window border-4 border-stone-800 p-4 rounded-t-2xl border-b-stone-500">
-        <life-bar />
-      </div>
-      <div class="building-window border-4 border-stone-800 p-4 rounded-t-2xl border-b-stone-500">
-        <score-counter />
-      </div>
+    <div class="grid grid-cols-2 gap-4 pb-10">
+      <life-bar />
+      <score-counter />
     </div>
-    <windows-grid />
+    <div class="bg-stone-700 h-5 rounded-t-full overflow-hidden border-l-8 border-stone-600" />
+    <div class="flex grow relative">
+      <game-loader @play="windowsGridRef.play()" />
+      <game-over @game-over="windowsGridRef.gameOver()" />
+      <windows-grid ref="windowsGridRef" />
+    </div>
     <div class="flex flex-row">
       <div class="grow building-wall h-16 border-l-8 border-stone-600" />
       <div
@@ -25,28 +25,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import WindowsGrid from '@/components/organisms/WindowsGrid.vue';
+import { defineComponent, ref } from 'vue';
 import LifeBar from '@/components/atoms/LifeBar.vue';
-import ScoreCounter from '@/components/atoms/ScoreCounter.vue';
 import PageTitle from '@/components/atoms/PageTitle.vue';
+import ScoreCounter from '@/components/atoms/ScoreCounter.vue';
+import GameLoader from '@/components/atoms/GameLoader.vue';
+import GameOver from '@/components/atoms/GameOver.vue';
+import WindowsGrid from '@/components/organisms/WindowsGrid.vue';
 
 export default defineComponent({
   name: 'GameView',
   components: {
+    GameLoader,
+    GameOver,
     LifeBar,
     ScoreCounter,
     WindowsGrid,
     PageTitle,
   },
+  setup() {
+    const windowsGridRef = ref();
+
+    return { windowsGridRef };
+  },
 });
 </script>
 
-<style>
-.building-window {
-  background: linear-gradient(135deg, rgba(24,24,24,1) 50%, rgba(52,79,130,1) 100%);
-}
-
+<style scoped>
 .building-wall {
   background-color: #44403C;
   opacity: 1;

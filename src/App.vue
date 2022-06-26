@@ -5,22 +5,17 @@
     class="min-h-screen bg-gradient-to-b from-sky-900 to-slate-900 text-stone-300"
   >
     <div class="container min-h-screen flex flex-col">
-      <div class="grow flex flex-col">
-        <router-view />
-      </div>
+      <router-view />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-import { useRoute } from 'vue-router';
 
 export default defineComponent({
   setup() {
-    const bgImg = computed(() => (useRoute().path === '/game'
-      ? "background-image: url('/img/bg.png')"
-      : ''));
+    const bgImg = computed(() => "background-image: url('/img/bg.jpg')");
 
     return { bgImg };
   },
@@ -36,7 +31,8 @@ body {
   font-family: 'Roboto Slab', Courier, monospace;
   cursor: crosshair;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: top;
+  background-attachment: fixed;
 }
 </style>

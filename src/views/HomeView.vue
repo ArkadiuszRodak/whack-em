@@ -1,40 +1,40 @@
 <template>
-  <div class="container min-h-screen flex flex-col">
-    <app-logo />
-    <div class="grow flex flex-col">
-      <page-title>
-        Menu
-      </page-title>
-      <nav>
-        <router-link
-          class="block text-center my-3 border-2 border-stone-300 rounded text-xl p-3 font-bold
+  <app-logo />
+  <div class="grow flex flex-col">
+    <nav>
+      <router-link
+        class="block text-center my-3 border-2 border-stone-300 rounded text-xl p-3 font-bold
           text-stone-300 hover:bg-stone-300 hover:text-stone-700"
-          :to="isUserNameSet() ? '/game' : '/options'"
-        >
-          PLAY
-        </router-link>
-        <router-link
-          class="block text-center my-3 border-2 border-stone-300 rounded text-xl p-3 font-bold
+        :to="isUserNameSet() ? '/game' : '/options'"
+      >
+        PLAY
+      </router-link>
+      <router-link
+        class="block text-center my-3 border-2 border-stone-300 rounded text-xl p-3 font-bold
           text-stone-300 hover:bg-stone-300 hover:text-stone-700"
-          to="/options"
-        >
-          OPTIONS
-        </router-link>
-      </nav>
-    </div>
+        to="/options"
+      >
+        OPTIONS
+      </router-link>
+      <router-link
+        class="block text-center my-3 border-2 border-stone-300 rounded text-xl p-3 font-bold
+          text-stone-300 hover:bg-stone-300 hover:text-stone-700"
+        to="/"
+      >
+        ABOUT
+      </router-link>
+    </nav>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { isUserNameSet } from '@/logic/useUserName';
-import PageTitle from '@/components/atoms/PageTitle.vue';
 import AppLogo from '@/components/atoms/AppLogo.vue';
 
 export default defineComponent({
   name: 'HomeView',
   components: {
-    PageTitle,
     AppLogo,
   },
   setup() {

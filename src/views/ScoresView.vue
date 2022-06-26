@@ -10,7 +10,7 @@ import { defineComponent } from 'vue';
 import PageTitle from '@/components/atoms/PageTitle.vue';
 
 export default defineComponent({
-  components: { PageTitle },
   name: 'ScoresView',
+  components: { PageTitle },
 });
 </script>

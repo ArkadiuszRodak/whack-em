@@ -1,17 +1,19 @@
 <template>
-  <div class="text-2xl mb-2">
-    Life
-  </div>
-  <div class="flex justify-between">
-    <template
-      v-for="(lifeBar) in lifeBars"
-      :key="`life-bar-${lifeBar}`"
-    >
-      <div
-        :class="[getLife() >= lifeBar + 1 ? 'bg-red-500' : 'bg-stone-500']"
-        class="h-8 w-10 inline-block rounded ml-1"
-      />
-    </template>
+  <div>
+    <div class="text-2xl mb-2">
+      Life
+    </div>
+    <div class="flex justify-between">
+      <template
+        v-for="(lifeBar) in lifeBars"
+        :key="`life-bar-${lifeBar}`"
+      >
+        <div
+          :class="[getLife() >= lifeBar + 1 ? 'bg-red-500' : 'bg-stone-500']"
+          class="h-8 w-10 inline-block rounded ml-1"
+        />
+      </template>
+    </div>
   </div>
 </template>
 
