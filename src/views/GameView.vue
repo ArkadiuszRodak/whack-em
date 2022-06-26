@@ -14,12 +14,12 @@
     </div>
     <windows-grid />
     <div class="flex flex-row">
-      <div class="grow bg-stone-700 h-16 border-l-8 border-stone-600" />
+      <div class="grow building-wall h-16 border-l-8 border-stone-600" />
       <div
         class="black w-20 h-16 border-t-8 border-t-stone-700 border-r-8 border-r-stone-500
               border-l-8 border-l-stone-800"
       />
-      <div class="grow bg-stone-700 h-16" />
+      <div class="grow building-wall h-16" />
     </div>
   </div>
 </template>
@@ -45,5 +45,12 @@ export default defineComponent({
 <style>
 .building-window {
   background: linear-gradient(135deg, rgba(24,24,24,1) 50%, rgba(52,79,130,1) 100%);
+}
+
+.building-wall {
+  background-color: #44403C;
+  opacity: 1;
+  background-image: linear-gradient(0deg, #302d29 50%, #44403C 50%);
+  background-size: 10px 10px;
 }
 </style>

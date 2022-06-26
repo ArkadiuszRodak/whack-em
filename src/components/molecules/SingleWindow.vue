@@ -4,10 +4,13 @@
     @click="whack"
     @keyup.enter="whack"
   >
-    <div
-      :style="[modelValue ? randomImage : '']"
-      class="absolute inset-0 h-full w-full bg-no-repeat bg-center bg-contain"
-    />
+    <transition name="slide-fade">
+      <div
+        v-show="modelValue"
+        :style="[randomImage]"
+        class="absolute inset-0 h-full w-full bg-no-repeat bg-center bg-contain"
+      />
+    </transition>
   </div>
 </template>
 
@@ -67,3 +70,19 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.slide-fade-enter-active {
+  transition: all 0.1s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(20px);
+  opacity: 0;
+}
+</style>
