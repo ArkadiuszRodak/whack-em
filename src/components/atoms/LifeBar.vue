@@ -9,7 +9,7 @@
     >
       <div
         :class="[getLife() >= lifeBar + 1 ? 'bg-red-500' : 'bg-stone-500']"
-        class="h-10 w-10 inline-block rounded ml-1"
+        class="h-8 w-10 inline-block rounded ml-1"
       />
     </template>
   </div>

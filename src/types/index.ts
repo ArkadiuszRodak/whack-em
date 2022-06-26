@@ -18,6 +18,5 @@ export interface LevelDef {
 }
 
 export interface Grid extends LevelDef {
-  squareSize: string;
   indexes: Record<number, boolean>
 }

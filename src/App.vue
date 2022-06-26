@@ -29,7 +29,7 @@ export default defineComponent({
 
 <style>
 body {
-  background: linear-gradient(90deg, rgba(24,24,24,1) 50%, rgba(52,79,130,1) 100%);
+  background: linear-gradient(315deg, rgba(24,24,24,1) 50%, rgba(52,79,130,1) 100%);
 }
 
 #whack_em_app {

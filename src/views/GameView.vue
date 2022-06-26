@@ -3,29 +3,23 @@
     <page-title class="mt-10">
       Whack'em!
     </page-title>
-    <div class="flex flex-row">
-      <div
-        style="min-width: 2%; max-width: 2%;"
-        class="bg-stone-600"
-      />
-      <div class="grow h-5 bg-stone-700" />
-    </div>
-    <div class="flex flex-row">
-      <div
-        style="min-width: 2%; max-width: 2%;"
-        class="bg-red-800"
-      />
-      <div class="grow grid gap-4 p-4 grid-cols-2 bg-red-900">
-        <div class="bg-sky-900 border-4 border-stone-900 p-4">
-          <life-bar />
-        </div>
-        <div class="bg-sky-900 border-4 border-stone-900 p-4">
-          <score-counter />
-        </div>
+    <div class="bg-stone-700 h-5 rounded-t-full overflow-hidden border-l-8 border-stone-600" />
+    <div class="grid gap-4 p-4 grid-cols-2 bg-red-900 border-l-8 border-red-800">
+      <div class="building-window border-4 border-stone-800 p-4 rounded-t-2xl border-b-stone-500">
+        <life-bar />
+      </div>
+      <div class="building-window border-4 border-stone-800 p-4 rounded-t-2xl border-b-stone-500">
+        <score-counter />
       </div>
     </div>
-    <div class="flex grow relative overflow-hidden">
-      <windows-grid />
+    <windows-grid />
+    <div class="flex flex-row">
+      <div class="grow bg-stone-700 h-16 border-l-8 border-stone-600" />
+      <div
+        class="black w-20 h-16 border-t-8 border-t-stone-700 border-r-8 border-r-stone-500
+              border-l-8 border-l-stone-800"
+      />
+      <div class="grow bg-stone-700 h-16" />
     </div>
   </div>
 </template>
@@ -47,3 +41,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+.building-window {
+  background: linear-gradient(135deg, rgba(24,24,24,1) 50%, rgba(52,79,130,1) 100%);
+}
+</style>

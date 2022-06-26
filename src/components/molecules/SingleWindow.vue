@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-full max-h-full rounded-full text-center bg-stone-400 pb-full relative"
+    class="h-full w-full max-h-full max-w-full text-center relative"
     @click="whack"
     @keyup.enter="whack"
   >

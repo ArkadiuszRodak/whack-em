@@ -2,20 +2,15 @@
   <game-loader @play="play()" />
   <game-over @game-over="gameOver()" />
   <div
-    id="main_content"
-    class="grow max-h-full w-full"
+    class="grow w-full h-full grid gap-4 self-end mx-auto p-4 bg-red-900 border-l-8 border-red-800"
+    :class="['grid-cols-' + grid.xs]"
   >
     <div
-      class="grid gap-4 self-end mx-auto"
-      :class="['grid-cols-' + grid.xs]"
-      :style="{ height: grid.squareSize, width: grid.squareSize }"
+      v-for="index in grid.size"
+      :key="`single-window-${index}`"
+      class="building-window border-4 border-stone-800 rounded-t-2xl border-b-stone-500"
     >
-      <div
-        v-for="index in grid.size"
-        :key="`single-window-${index}`"
-      >
-        <single-window v-model="grid.indexes[index - 1]" />
-      </div>
+      <single-window v-model="grid.indexes[index - 1]" />
     </div>
   </div>
 </template>
@@ -36,35 +31,22 @@ import { Grid } from '@/types';
 
 export default defineComponent({
   name: 'WindowsGrid',
-  components: { SingleWindow, GameLoader, GameOver },
+  components: {
+    SingleWindow,
+    GameLoader,
+    GameOver,
+  },
   setup() {
-    let mainContentElement: HTMLElement | null;
     let intervalTimer: number;
 
     const levelDef = getLevelDef(getLevel());
 
     const grid = reactive<Grid>({
       ...levelDef,
-      squareSize: '0px',
       // generate object of indexes with bool value
       indexes: Array.from({ length: levelDef.size }, (_, i) => i)
         .reduce((o, key) => ({ ...o, [key]: false }), {}),
     });
-
-    // calculates responsive square size to fill the screen with grid
-    const setGridSize = (): void => {
-      if (!mainContentElement) {
-        mainContentElement = document.querySelector('#main_content');
-        if (!mainContentElement) {
-          throw new Error('Page not loaded properly. Content not found.');
-        }
-      }
-      grid.squareSize = ((): string => {
-        const width = mainContentElement?.clientWidth || 0;
-        const height = mainContentElement?.clientHeight || 0;
-        return `${height < width ? height : width}px`;
-      })();
-    };
 
     const play = (): void => {
       // wait another second after game loader closes
@@ -82,8 +64,6 @@ export default defineComponent({
     onMounted(() => {
       resetScore();
       resetLife();
-      setGridSize();
-      window.addEventListener('resize', setGridSize);
     });
 
     return { grid, play, gameOver };
