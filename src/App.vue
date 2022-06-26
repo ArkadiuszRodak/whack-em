@@ -5,7 +5,11 @@
     class="min-h-screen bg-gradient-to-b from-sky-900 to-slate-900 text-stone-300"
   >
     <div class="container min-h-screen flex flex-col">
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <transition name="fade">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>
@@ -34,5 +38,15 @@ body {
   background-size: cover;
   background-position: top;
   background-attachment: fixed;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
