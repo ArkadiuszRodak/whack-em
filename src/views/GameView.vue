@@ -1,4 +1,5 @@
 <template>
+  <page-title/>
   <div class="flex flex-col h-full">
     <div class="md:flex md:justify-between">
       <life-bar />

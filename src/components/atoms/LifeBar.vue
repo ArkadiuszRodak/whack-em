@@ -1,10 +1,10 @@
 <template>
-  <div class="flex justify-between mb-5 border-b-2 border-stone-800 py-2">
+  <div class="flex justify-between mb-5 border-b-2 border-stone-300 py-2">
     <span class="text-3xl mr-1">Life</span>
     <div>
       <template v-for="(lifeBar) in lifeBars" :key="`life-bar-${lifeBar}`">
         <div
-          :class="[getLife() >= lifeBar + 1 ? 'bg-red-800' : 'bg-stone-400']"
+          :class="[getLife() >= lifeBar + 1 ? 'bg-red-500' : 'bg-stone-500']"
           class="life-bar inline-block rounded ml-1"
         />
       </template>

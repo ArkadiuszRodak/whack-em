@@ -1,15 +1,17 @@
 <template>
-  <div id="whack_em_app" class="container h-screen text-stone-800 flex flex-col overflow-hidden">
-    <div>
-      <div id="logotype" class="text-center text-6xl font-bold pt-10 pb-10">Whack'em!</div>
-      <hr class="border-t-2 border-stone-800 pb-10" />
-    </div>
-    <page-title />
-    <hr class="border-t-2 border-stone-800 pb-5" />
+<div
+  id="whack_em_app"
+  class="min-h-screen bg-gradient-to-b from-stone-600 to-gray-800 text-stone-300"
+>
+  <div class="container flex flex-col">
+      <div id="logotype" class="text-center text-6xl font-bold pt-10 pb-10">
+        Whack'em!
+      </div>
     <div class="grow">
       <router-view />
     </div>
   </div>
+</div>
 </template>
 
 <style>
@@ -21,11 +23,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import PageTitle from '@/components/atoms/PageTitle.vue';
 
-export default defineComponent({
-  components: {
-    PageTitle,
-  },
-});
+export default defineComponent({});
 </script>

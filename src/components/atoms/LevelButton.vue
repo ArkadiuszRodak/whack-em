@@ -2,9 +2,8 @@
   <div
     @click="setLevel(level)"
     @keypress.e="setLevel(level)"
-    :class="[level === getLevel() ? className : 'border-stone-800']"
-    class="text-center my-3 border-2 rounded text-xl p-3 font-bold
-    hover:bg-stone-200 hover:text-stone-800"
+    :class="[level === getLevel() ? className : 'text-stone-300 border-stone-300']"
+    class="text-center my-3 border-2 rounded text-xl p-3 font-bold"
     tabindex="0"
     role="button"
   >
@@ -30,7 +29,9 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const className = computed(() => `bg-${props.color} border-${props.color} text-stone-300`);
+    const className = computed(
+      () => `bg-${props.color} border-${props.color} hover:bg-${props.color}-300 text-stone-700`,
+    );
 
     return {
       className,

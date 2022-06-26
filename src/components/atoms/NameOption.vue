@@ -6,8 +6,8 @@
         @input="setName(name)"
         id="name"
         type="text"
-        class="text-2xl py-2 w-full h-full bg-transparent border-b-2 border-stone-800 outline-none
-          hover:border-sky-800 active:border-sky-800 hover:text-sky-800 active:text-sky-800"
+        class="text-2xl py-2 w-full h-full bg-transparent border-b-2 border-stone-300 outline-none
+          hover:border-sky-300 active:border-sky-300 hover:text-sky-300 active:text-sky-300"
       />
     </label>
   </div>
@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { getName, setName } from '@/logic/useName';
+import { getName, setName } from '@/logic/useUserName';
 
 export default defineComponent({
   name: 'NameOption',
