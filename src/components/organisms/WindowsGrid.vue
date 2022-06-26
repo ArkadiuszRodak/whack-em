@@ -10,7 +10,7 @@
     >
       <div
         class="broken-glass w-100 h-100 grow"
-        :style="[glassImg]"
+        style="background-image: url('/img/glass.jpg')"
       >
         <single-window v-model="grid.indexes[index - 1]" />
       </div>
@@ -22,8 +22,9 @@
 import {
   defineComponent,
   onMounted,
-  computed,
   reactive,
+  ref,
+  watch,
 } from 'vue';
 import { getLevelDef, getLevel } from '@/logic/useLevel';
 import { resetLife } from '@/logic/useLife';
@@ -38,10 +39,9 @@ export default defineComponent({
 
   },
   setup() {
-    const glassImg = computed(
-      () => "background-image: url('/img/glass.jpg')",
-    );
+    const interval = ref(1000);
     let intervalTimer: number;
+    const counter = ref(0);
 
     const levelDef = getLevelDef(getLevel());
 
@@ -53,17 +53,24 @@ export default defineComponent({
     });
 
     const play = (): void => {
-      // wait another second after game loader closes
-      setTimeout(() => {
-        intervalTimer = setInterval(() => {
-          grid.indexes[Math.floor(Math.random() * grid.size)] = true;
-        }, 1000);
-      }, 1000);
+      intervalTimer = setInterval(() => {
+        counter.value += 1;
+        grid.indexes[Math.floor(Math.random() * grid.size)] = true;
+      }, interval.value);
     };
 
     const gameOver = (): void => {
       clearInterval(intervalTimer);
     };
+
+    // increase difficulty by speeding up
+    watch(counter, (val: number): void => {
+      if (val && val % 10 === 0) {
+        interval.value -= 10;
+        clearInterval(intervalTimer);
+        play();
+      }
+    });
 
     onMounted(() => {
       resetScore();
@@ -71,7 +78,6 @@ export default defineComponent({
     });
 
     return {
-      glassImg,
       grid,
       play,
       gameOver,

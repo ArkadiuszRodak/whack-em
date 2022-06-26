@@ -1,7 +1,7 @@
 <template>
   <div
     id="whack_em_app"
-    :style="bgImg"
+    style="background-image: url('/img/bg.jpg')"
     class="min-h-screen bg-gradient-to-b from-sky-900 to-slate-900 text-stone-300"
   >
     <div class="container min-h-screen flex flex-col">
@@ -15,15 +15,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent } from 'vue';
 
-export default defineComponent({
-  setup() {
-    const bgImg = computed(() => "background-image: url('/img/bg.jpg')");
-
-    return { bgImg };
-  },
-});
+export default defineComponent({});
 </script>
 
 <style>

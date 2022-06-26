@@ -80,11 +80,11 @@ export default defineComponent({
 
 <style scoped>
 .slide-fade-enter-active {
-  transition: all 0.1s ease-out;
+  transition: all 0.05s ease-out;
 }
 
 .slide-fade-leave-active {
-  transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.05s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .slide-fade-enter-from,
