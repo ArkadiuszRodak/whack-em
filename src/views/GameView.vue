@@ -29,8 +29,8 @@ import { defineComponent, ref } from 'vue';
 import LifeBar from '@/components/atoms/LifeBar.vue';
 import PageTitle from '@/components/atoms/PageTitle.vue';
 import ScoreCounter from '@/components/atoms/ScoreCounter.vue';
-import GameLoader from '@/components/atoms/GameLoader.vue';
-import GameOver from '@/components/atoms/GameOver.vue';
+import GameLoader from '@/components/molecules/GameLoader.vue';
+import GameOver from '@/components/molecules/GameOver.vue';
 import WindowsGrid from '@/components/organisms/WindowsGrid.vue';
 
 export default defineComponent({

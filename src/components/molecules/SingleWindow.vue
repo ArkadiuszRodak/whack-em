@@ -40,17 +40,24 @@ export default defineComponent({
   emits: ['update:modelValue'],
   setup(props, { emit }) {
     const randomImgId = ref(1);
+    const whacked = ref(false);
     const randomImg = computed(
-      () => `background-image: url('/img/${getMode()}/${randomImgId.value}.png')`,
+      () => (whacked.value
+        ? "background-image: url('/img/whack.png')"
+        : `background-image: url('/img/${getMode()}/${randomImgId.value}.png')`),
     );
 
     let timer: number;
 
     const whack = () => {
       if (props.modelValue) {
+        whacked.value = true;
         incrementScore();
-        clearTimeout(timer);
         emit('update:modelValue', false);
+        setTimeout(() => {
+          whacked.value = false;
+          clearTimeout(timer);
+        }, 100);
       }
     };
 
