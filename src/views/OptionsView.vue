@@ -13,7 +13,6 @@
       <div class="text-3xl text-center mr-4">
         PLAYER NAME
       </div>
-      <hr class="grow border-stone-300 border-t-2">
     </div>
     <name-option />
 
@@ -21,7 +20,6 @@
       <div class="text-3xl text-center mr-4">
         LEVEL
       </div>
-      <hr class="grow border-stone-300 border-t-2">
     </div>
     <level-button
       :level="GameLevel.Easy"
@@ -46,7 +44,6 @@
       <div class="text-3xl text-center mr-4">
         MODE
       </div>
-      <hr class="grow border-stone-300 border-t-2">
     </div>
     <div>
       Modes here: eg. Wild West, Politico, Scary
