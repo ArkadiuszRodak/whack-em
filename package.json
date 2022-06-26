@@ -46,7 +46,7 @@
     "extends": [
       "airbnb",
       "airbnb-typescript",
-      "plugin:vue/vue3-essential",
+      "plugin:vue/vue3-recommended",
       "@vue/airbnb",
       "@vue/typescript"
     ],

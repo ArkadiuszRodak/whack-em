@@ -1,8 +1,11 @@
 <template>
-  <div class="flex justify-between mb-5 border-b-2 border-stone-300 py-2">
-    <span class="text-3xl mr-2">Score</span>
-    <span v-text="getScore()" class="text-3xl" />
+  <div class="text-2xl text-right mb-2">
+    Score
   </div>
+  <div
+    class="text-3xl text-right"
+    v-text="getScore()"
+  />
 </template>
 
 <script lang="ts">

@@ -1,7 +1,7 @@
 <template>
-  <div class="flex items-center justify-between mb-10">
+  <div class="flex items-center justify-between pb-10">
     <div class="text-5xl">
-      <slot/>
+      <slot />
     </div>
     <router-link
       v-if="isBackBtnVisible"
@@ -20,7 +20,7 @@ import { useRoute } from 'vue-router';
 
 export default defineComponent({
   setup() {
-    const isBackBtnVisible = computed(() => useRoute().name !== 'menu');
+    const isBackBtnVisible = computed(() => useRoute().path !== '/');
 
     return { isBackBtnVisible };
   },

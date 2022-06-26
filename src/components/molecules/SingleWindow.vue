@@ -1,8 +1,8 @@
 <template>
   <div
+    class="h-full max-h-full rounded-full text-center bg-stone-400 pb-full relative"
     @click="whack"
     @keyup.enter="whack"
-    class="h-full max-h-full rounded-full text-center bg-stone-400 pb-full relative"
   >
     <div
       :style="[modelValue ? randomImage : '']"
@@ -23,7 +23,7 @@ import { decrementLife } from '@/logic/useLife';
 import { getMode } from '@/logic/useMode';
 
 export default defineComponent({
-  name: 'SingleMole',
+  name: 'SingleWindow',
   props: {
     visibilityTime: {
       type: Number,
@@ -34,6 +34,7 @@ export default defineComponent({
       default: false,
     },
   },
+  emits: ['update:modelValue'],
   setup(props, { emit }) {
     const randomImageId = ref(1);
     const randomImage = computed(
