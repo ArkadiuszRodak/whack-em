@@ -1,31 +1,46 @@
 <template>
-  <div id="whack_em_app" class="container h-screen text-stone-800 flex flex-col overflow-hidden">
-    <div>
-      <div id="logotype" class="text-center text-6xl font-bold pt-10 pb-10">Whack'em!</div>
-      <hr class="border-t-2 border-stone-800 pb-10" />
-    </div>
-    <page-title />
-    <hr class="border-t-2 border-stone-800 pb-5" />
-    <div class="grow">
-      <router-view />
+  <div
+    id="whack_em_app"
+    style="background-image: url('/img/bg.jpg')"
+    class="min-h-screen bg-gradient-to-b from-sky-900 to-slate-900 text-stone-300"
+  >
+    <div class="container min-h-screen flex flex-col">
+      <router-view v-slot="{ Component }">
+        <transition name="fade">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>
 
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({});
+</script>
+
 <style>
+body {
+  background: linear-gradient(315deg, rgba(24,24,24,1) 50%, rgba(52,79,130,1) 100%);
+}
+
 #whack_em_app {
   font-family: 'Roboto Slab', Courier, monospace;
   cursor: crosshair;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-import PageTitle from '@/components/atoms/PageTitle.vue';
-
-export default defineComponent({
-  components: {
-    PageTitle,
-  },
-});
-</script>

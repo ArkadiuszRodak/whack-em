@@ -1,24 +1,16 @@
-# whack-em
+# Whack'em!
 
-## Project setup
-```
-npm install
-```
+Simple retro Whack A Mole like game written in Vue 3, Typescript and Tailwind CSS.
+It's a project made for fun and to practice frontend technologies.
+It can be played on desktops or mobile devices.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## How to play
+Set your player name in options and play. 
+Shoot building windows when a character appears to get a point.
+If you miss, you loose a life.
+Game is over when you loose all lives.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Options
+In options menu you can also adjust difficulty level. 
+Building has more windows to shoot if you choose harder level.
+There is also an option to select characters appearing in building windows.

@@ -1,12 +1,12 @@
 <template>
   <div
-    @click="setLevel(level)"
-    @keypress.e="setLevel(level)"
-    :class="[level === getLevel() ? className : 'border-stone-800']"
+    :class="[level === getLevel() ? className : 'text-stone-300 border-stone-300']"
     class="text-center my-3 border-2 rounded text-xl p-3 font-bold
-    hover:bg-stone-200 hover:text-stone-800"
+          hover:text-stone-700 hover:bg-stone-300 hover:border-stone-300"
     tabindex="0"
     role="button"
+    @click="setLevel(level)"
+    @keypress.e="setLevel(level)"
   >
     <slot />
   </div>
@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, computed } from 'vue';
-import { getLevel, setLevel } from '@/logic/useLevel';
+import { getLevel, setLevel } from '@/logic/level';
 import { GameLevel } from '@/types/index';
 
 export default defineComponent({
@@ -30,7 +30,9 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const className = computed(() => `bg-${props.color} border-${props.color} text-stone-300`);
+    const className = computed(
+      () => `bg-${props.color} border-${props.color} hover:bg-${props.color}-300 text-stone-700`,
+    );
 
     return {
       className,

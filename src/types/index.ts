@@ -1,3 +1,10 @@
+export enum GameMode {
+  Zombies = 'zombies',
+  Ghosts = 'ghosts',
+  Politico = 'politico',
+  Shooter = 'shooter',
+}
+
 export enum GameLevel {
   Easy,
   Normal,
@@ -11,6 +18,11 @@ export interface LevelDef {
 }
 
 export interface Grid extends LevelDef {
-  squareSize: string;
   indexes: Record<number, boolean>
+}
+
+export interface Score {
+  player: string;
+  score: number;
+  date: string;
 }

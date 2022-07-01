@@ -1,0 +1,78 @@
+<template>
+  <app-logo />
+  <page-title>
+    Score Board
+  </page-title>
+  <template v-if="scores.length">
+    <div
+      v-for="(score, index) in scores"
+      :key="`score-row-${index}`"
+      class="flex items-baseline border-b-2 border-stone-300 py-4"
+    >
+      <span
+        class="text-xl mr-4"
+        v-text="`${index + 1}.`"
+      />
+
+      <span
+        class="text-3xl mr-4"
+        v-text="score.player"
+      />
+      <span
+        class="grow mr-4"
+        v-text="score.date"
+      />
+      <span
+        class="text-3xl"
+        v-text="score.score"
+      />
+    </div>
+  </template>
+  <div
+    v-else
+    class="mx-auto p-4 text-3xl border-t-2 border-b-2 border-stone-300"
+  >
+    No scores yet. Play a game!
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { format } from 'date-fns';
+import { getName } from '@/logic/player';
+import { getScore, resetScore } from '@/logic/score';
+import AppLogo from '@/components/atoms/AppLogo.vue';
+import PageTitle from '@/components/atoms/PageTitle.vue';
+import { Score } from '@/types';
+
+export default defineComponent({
+  name: 'ScoresView',
+  components: {
+    AppLogo,
+    PageTitle,
+  },
+  setup() {
+    const scores = localStorage.getItem('scores')
+      ? JSON.parse(localStorage.getItem('scores') as string)
+      : [];
+
+    if (getScore()) {
+      const currentScore: Score = {
+        player: getName(),
+        score: getScore(),
+        date: format(new Date(), 'yyyy-MM-dd HH:mm'),
+      };
+
+      resetScore();
+
+      scores.push(currentScore);
+      scores.sort((a: Score, b: Score): number => b.score - a.score);
+      scores.slice(0, 10);
+
+      localStorage.setItem('scores', JSON.stringify(scores));
+    }
+
+    return { scores };
+  },
+});
+</script>
