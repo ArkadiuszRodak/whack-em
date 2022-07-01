@@ -31,7 +31,7 @@ module.exports = {
       pattern: /(border|text)-stone-(300|700)/,
     },
     {
-      pattern: /(bg|border)-(sky|emerald|red)-500/,
+      pattern: /(bg|border)-(sky|emerald|red|slate)-500/,
       variants: ['hover'],
     },
   ],

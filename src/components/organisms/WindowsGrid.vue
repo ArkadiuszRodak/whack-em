@@ -21,7 +21,6 @@
 <script lang="ts">
 import {
   defineComponent,
-  onMounted,
   reactive,
   ref,
   watch,
@@ -72,10 +71,8 @@ export default defineComponent({
       }
     });
 
-    onMounted(() => {
-      resetScore();
-      resetLife();
-    });
+    resetScore();
+    resetLife();
 
     return {
       grid,

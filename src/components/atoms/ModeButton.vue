@@ -1,12 +1,12 @@
 <template>
   <div
-    :class="[level === getLevel() ? className : 'text-stone-300 border-stone-300']"
+    :class="[mode === getMode() ? className : 'text-stone-300 border-stone-300']"
     class="text-center my-3 border-2 rounded text-xl p-3 font-bold
           hover:text-stone-700 hover:bg-stone-300 hover:border-stone-300"
     tabindex="0"
     role="button"
-    @click="setLevel(level)"
-    @keypress.e="setLevel(level)"
+    @click="setMode(mode)"
+    @keypress.e="setMode(mode)"
   >
     <slot />
   </div>
@@ -14,14 +14,14 @@
 
 <script lang="ts">
 import { defineComponent, PropType, computed } from 'vue';
-import { getLevel, setLevel } from '@/logic/level';
-import { GameLevel } from '@/types/index';
+import { getMode, setMode } from '@/logic/mode';
+import { GameMode } from '@/types/index';
 
 export default defineComponent({
   name: 'LevelButton',
   props: {
-    level: {
-      type: Number as PropType<GameLevel>,
+    mode: {
+      type: String as PropType<GameMode>,
       required: true,
     },
     color: {
@@ -36,8 +36,8 @@ export default defineComponent({
 
     return {
       className,
-      getLevel,
-      setLevel,
+      getMode,
+      setMode,
     };
   },
 });
