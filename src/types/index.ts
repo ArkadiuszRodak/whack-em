@@ -20,3 +20,9 @@ export interface LevelDef {
 export interface Grid extends LevelDef {
   indexes: Record<number, boolean>
 }
+
+export interface Score {
+  player: string;
+  score: number;
+  date: string;
+}

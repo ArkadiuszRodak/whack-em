@@ -1,6 +1,6 @@
 # Whack'em!
 
-Simple Whack A Mole like game written in Vue 3, Typescript and Tailwind CSS.
+Simple retro Whack A Mole like game written in Vue 3, Typescript and Tailwind CSS.
 It's a project made for fun and to practice frontend technologies.
 It can be played on desktops or mobile devices.
 

@@ -4,7 +4,7 @@
     About
   </page-title>
   <p class="text-xl mb-4">
-    Simple Whack A Mole like game written in Vue 3, Typescript and Tailwind CSS.
+    Simple retro Whack A Mole like game written in Vue 3, Typescript and Tailwind CSS.
     <br>It's a project made for fun and to practice frontend technologies.
     <br>It can be played on desktops or mobile devices.
   </p>
