@@ -21,13 +21,12 @@
 <script lang="ts">
 import {
   defineComponent,
-  onMounted,
   reactive,
   ref,
   watch,
 } from 'vue';
 import { getLevelDef, getLevel } from '@/logic/level';
-import { resetLife } from '@/logic/life';
+import { clearLife, resetLife } from '@/logic/life';
 import { resetScore } from '@/logic/score';
 import SingleWindow from '@/components/molecules/SingleWindow.vue';
 import { Grid } from '@/types';
@@ -65,17 +64,19 @@ export default defineComponent({
 
     // increase difficulty by speeding up
     watch(counter, (val: number): void => {
-      if (val && val % 10 === 0) {
+      if (interval.value >= 20 && val && val % 10 === 0) {
         interval.value -= 10;
         clearInterval(intervalTimer);
         play();
       }
+      if (interval.value < 20) {
+        clearLife();
+        gameOver();
+      }
     });
 
-    onMounted(() => {
-      resetScore();
-      resetLife();
-    });
+    resetScore();
+    resetLife();
 
     return {
       grid,

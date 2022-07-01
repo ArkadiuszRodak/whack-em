@@ -8,7 +8,7 @@
       <div
         v-show="modelValue"
         :style="[randomImg]"
-        class="absolute inset-0 h-full w-full bg-no-repeat bg-center bg-contain"
+        class="absolute inset-0 h-full w-full bg-no-repeat bg-bottom bg-contain"
       />
     </transition>
   </div>
@@ -65,6 +65,7 @@ export default defineComponent({
       () => props.modelValue,
       (val: boolean) => {
         if (val) {
+          randomImgId.value = Math.floor(Math.random() * 5 + 1);
           timer = setTimeout(() => {
             decrementLife();
             emit('update:modelValue', false);

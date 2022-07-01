@@ -6,9 +6,7 @@
   >
     <div class="container min-h-screen flex flex-col">
       <router-view v-slot="{ Component }">
-        <transition name="fade">
-          <component :is="Component" />
-        </transition>
+        <component :is="Component" />
       </router-view>
     </div>
   </div>
@@ -32,15 +30,5 @@ body {
   background-size: cover;
   background-position: top;
   background-attachment: fixed;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 </style>

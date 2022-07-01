@@ -1,9 +1,12 @@
 import { ref } from 'vue';
 
-export const lifeAtStart = 1;
+export const lifeAtStart = 10;
 const life = ref(lifeAtStart);
 
 export const getLife = (): number => life.value;
+export const clearLife = (): void => {
+  life.value = 0;
+};
 export const resetLife = (): void => {
   life.value = lifeAtStart;
 };

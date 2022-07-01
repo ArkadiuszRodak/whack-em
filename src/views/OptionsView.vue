@@ -45,26 +45,37 @@
         MODE
       </div>
     </div>
-    <div>
-      Modes here: eg. Wild West, Politico, Scary
-    </div>
+    <mode-button
+      :mode="GameMode.Zombies"
+      color="slate-500"
+    >
+      Zombies
+    </mode-button>
+    <mode-button
+      :mode="GameMode.Ghosts"
+      color="slate-500"
+    >
+      Ghosts
+    </mode-button>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { isUserNameSet } from '@/logic/player';
-import LevelButton from '@/components/atoms/LevelButton.vue';
-import NameOption from '@/components/atoms/NameOption.vue';
-import ConfirmationDialog from '@/components/atoms/ConfirmationDialog.vue';
-import PageTitle from '@/components/atoms/PageTitle.vue';
 import AppLogo from '@/components/atoms/AppLogo.vue';
-import { GameLevel } from '@/types';
+import PageTitle from '@/components/atoms/PageTitle.vue';
+import ConfirmationDialog from '@/components/atoms/ConfirmationDialog.vue';
+import NameOption from '@/components/atoms/NameOption.vue';
+import LevelButton from '@/components/atoms/LevelButton.vue';
+import ModeButton from '@/components/atoms/ModeButton.vue';
+import { GameLevel, GameMode } from '@/types';
 
 export default defineComponent({
   name: 'OptionsView',
   components: {
     LevelButton,
+    ModeButton,
     NameOption,
     ConfirmationDialog,
     PageTitle,
@@ -73,7 +84,7 @@ export default defineComponent({
   setup() {
     const isDialogVisible = ref(!isUserNameSet());
 
-    return { isDialogVisible, GameLevel };
+    return { isDialogVisible, GameLevel, GameMode };
   },
 });
 </script>
