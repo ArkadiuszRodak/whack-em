@@ -37,6 +37,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { isUserNameSet } from '@/logic/player';
+import { resetScore } from '@/logic/score';
+import { resetLife } from '@/logic/life';
 import AppLogo from '@/components/atoms/AppLogo.vue';
 
 export default defineComponent({
@@ -45,6 +47,9 @@ export default defineComponent({
     AppLogo,
   },
   setup() {
+    resetScore();
+    resetLife();
+
     return { isUserNameSet };
   },
 });

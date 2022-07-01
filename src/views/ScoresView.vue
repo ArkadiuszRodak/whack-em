@@ -9,20 +9,19 @@
       :key="`score-row-${index}`"
       class="flex items-baseline border-b-2 border-stone-300 py-4"
     >
-      <span
+      <div
         class="text-xl mr-4"
         v-text="`${index + 1}.`"
       />
 
-      <span
-        class="text-3xl mr-4"
-        v-text="score.player"
-      />
-      <span
-        class="grow mr-4"
-        v-text="score.date"
-      />
-      <span
+      <div class="text-3xl mr-4 grow">
+        {{ score.player }}
+        <span
+          class="ml-4 text-xl hidden sm:inline-block"
+          v-text="score.date"
+        />
+      </div>
+      <div
         class="text-3xl"
         v-text="score.score"
       />

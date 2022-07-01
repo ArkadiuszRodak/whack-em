@@ -57,24 +57,18 @@
     >
       Ghosts
     </mode-button>
-    <mode-button
-      :mode="GameMode.Shooter"
-      color="slate-500"
-    >
-      Shooter
-    </mode-button>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { isUserNameSet } from '@/logic/player';
+import AppLogo from '@/components/atoms/AppLogo.vue';
+import PageTitle from '@/components/atoms/PageTitle.vue';
+import ConfirmationDialog from '@/components/atoms/ConfirmationDialog.vue';
+import NameOption from '@/components/atoms/NameOption.vue';
 import LevelButton from '@/components/atoms/LevelButton.vue';
 import ModeButton from '@/components/atoms/ModeButton.vue';
-import NameOption from '@/components/atoms/NameOption.vue';
-import ConfirmationDialog from '@/components/atoms/ConfirmationDialog.vue';
-import PageTitle from '@/components/atoms/PageTitle.vue';
-import AppLogo from '@/components/atoms/AppLogo.vue';
 import { GameLevel, GameMode } from '@/types';
 
 export default defineComponent({

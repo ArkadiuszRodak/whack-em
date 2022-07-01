@@ -20,7 +20,7 @@ const levelDef: Record<GameLevel, LevelDef> = {
 };
 
 const getLevelFromLocalStorage = (): GameLevel => {
-  const lvl = parseInt(localStorage.getItem('whack-em-level') as string, 10);
+  const lvl = parseInt(localStorage.getItem('level') as string, 10);
 
   return Number.isInteger(lvl) && Object.values(GameLevel).includes(lvl)
     ? (lvl as unknown as GameLevel)
@@ -34,5 +34,5 @@ export const getLevelDef = (lvl: GameLevel): LevelDef => levelDef[lvl];
 export const getLevel = (): GameLevel => level.value;
 export const setLevel = (lvl: GameLevel): void => {
   level.value = lvl;
-  localStorage.setItem('whack-em-level', `${lvl}`); // level as enum key
+  localStorage.setItem('level', `${lvl}`); // level as enum key
 };

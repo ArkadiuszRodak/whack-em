@@ -7,7 +7,7 @@
       class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2
       w-1/2 py-5 text-center rounded-3xl drop-shadow-xl bg-red-800 text-stone-300"
     >
-      <div class="text-7xl">
+      <div class="text-5xl">
         Game Over
       </div>
       <div class="text-xl">

@@ -1,7 +1,6 @@
 export enum GameMode {
   Zombies = 'zombies',
   Ghosts = 'ghosts',
-  Shooter = 'shooter',
 }
 
 export enum GameLevel {
