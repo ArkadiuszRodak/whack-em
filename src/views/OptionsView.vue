@@ -53,7 +53,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { isUserNameSet } from '@/logic/useUserName';
+import { isUserNameSet } from '@/logic/player';
 import LevelButton from '@/components/atoms/LevelButton.vue';
 import NameOption from '@/components/atoms/NameOption.vue';
 import ConfirmationDialog from '@/components/atoms/ConfirmationDialog.vue';

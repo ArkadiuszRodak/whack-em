@@ -1,8 +1,9 @@
 import { createMemoryHistory, createRouter, RouteRecordRaw } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import GameView from '../views/GameView.vue';
-import OptionsView from '../views/OptionsView.vue';
-import ScoresView from '../views/ScoresView.vue';
+import AboutView from '@/views/AboutView.vue';
+import HomeView from '@/views/HomeView.vue';
+import GameView from '@/views/GameView.vue';
+import OptionsView from '@/views/OptionsView.vue';
+import ScoresView from '@/views/ScoresView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -20,6 +21,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/scores',
     component: ScoresView,
+  },
+  {
+    path: '/about',
+    component: AboutView,
   },
 ];
 

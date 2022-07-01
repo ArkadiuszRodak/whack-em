@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { getName, setName } from '@/logic/useUserName';
+import { getName, setName } from '@/logic/player';
 
 export default defineComponent({
   name: 'NameOption',

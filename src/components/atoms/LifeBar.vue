@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { lifeAtStart, getLife } from '@/logic/useLife';
+import { lifeAtStart, getLife } from '@/logic/life';
 
 export default defineComponent({
   name: 'LifeBar',

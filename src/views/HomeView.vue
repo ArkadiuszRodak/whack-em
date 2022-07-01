@@ -19,7 +19,7 @@
       <router-link
         class="block text-center my-3 border-2 border-stone-300 rounded text-xl p-3 font-bold
           text-stone-300 hover:bg-stone-300 hover:text-stone-700"
-        to="/"
+        to="/about"
       >
         ABOUT
       </router-link>
@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { isUserNameSet } from '@/logic/useUserName';
+import { isUserNameSet } from '@/logic/player';
 import AppLogo from '@/components/atoms/AppLogo.vue';
 
 export default defineComponent({

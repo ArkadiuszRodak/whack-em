@@ -20,7 +20,7 @@
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { getLife } from '@/logic/useLife';
+import { getLife } from '@/logic/life';
 
 export default defineComponent({
   name: 'GameOver',

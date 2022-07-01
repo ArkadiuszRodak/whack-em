@@ -26,9 +26,9 @@ import {
   ref,
   watch,
 } from 'vue';
-import { getLevelDef, getLevel } from '@/logic/useLevel';
-import { resetLife } from '@/logic/useLife';
-import { resetScore } from '@/logic/useScore';
+import { getLevelDef, getLevel } from '@/logic/level';
+import { resetLife } from '@/logic/life';
+import { resetScore } from '@/logic/score';
 import SingleWindow from '@/components/molecules/SingleWindow.vue';
 import { Grid } from '@/types';
 

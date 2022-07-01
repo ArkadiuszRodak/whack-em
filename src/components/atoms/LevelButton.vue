@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, computed } from 'vue';
-import { getLevel, setLevel } from '@/logic/useLevel';
+import { getLevel, setLevel } from '@/logic/level';
 import { GameLevel } from '@/types/index';
 
 export default defineComponent({

@@ -21,9 +21,9 @@ import {
   ref,
   computed,
 } from 'vue';
-import { incrementScore } from '@/logic/useScore';
-import { decrementLife } from '@/logic/useLife';
-import { getMode } from '@/logic/useMode';
+import { incrementScore } from '@/logic/score';
+import { decrementLife } from '@/logic/life';
+import { getMode } from '@/logic/mode';
 
 export default defineComponent({
   name: 'SingleWindow',

@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { getScore } from '@/logic/useScore';
+import { getScore } from '@/logic/score';
 
 export default defineComponent({
   name: 'ScoreCounter',
