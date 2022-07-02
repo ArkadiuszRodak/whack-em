@@ -1,17 +1,20 @@
 import { ref } from 'vue';
 
-export const lifeAtStart = 10;
+const lifeAtStart = 10;
 const life = ref(lifeAtStart);
 
-export const getLife = (): number => life.value;
-export const clearLife = (): void => {
-  life.value = 0;
-};
-export const resetLife = (): void => {
-  life.value = lifeAtStart;
-};
-export const decrementLife = (): void => {
-  if (life.value > 0) {
-    life.value -= 1;
-  }
-};
+export const useLife = () => ({
+  atStart: (): number => lifeAtStart,
+  get: (): number => life.value,
+  clear: (): void => {
+    life.value = 0;
+  },
+  reset: (): void => {
+    life.value = lifeAtStart;
+  },
+  decrement: (): void => {
+    if (life.value > 0) {
+      life.value -= 1;
+    }
+  },
+});

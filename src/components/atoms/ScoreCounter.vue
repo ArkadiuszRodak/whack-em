@@ -5,19 +5,21 @@
     </div>
     <div
       class="text-3xl text-right"
-      v-text="getScore()"
+      v-text="score"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { getScore } from '@/logic/score';
+import { defineComponent, computed } from 'vue';
+import { useScore } from '@/logic/score';
 
 export default defineComponent({
   name: 'ScoreCounter',
   setup() {
-    return { getScore };
+    const score = computed(() => useScore().get());
+
+    return { score };
   },
 });
 </script>

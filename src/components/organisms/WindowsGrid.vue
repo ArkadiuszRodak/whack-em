@@ -1,5 +1,6 @@
 <template>
   <div
+    id="windows_grid"
     class="grow w-full h-full grid gap-4 self-end mx-auto p-4 bg-red-900 border-l-8 border-red-800"
     :class="['grid-cols-' + grid.xs]"
   >
@@ -25,9 +26,9 @@ import {
   ref,
   watch,
 } from 'vue';
-import { getLevelDef, getLevel } from '@/logic/level';
-import { clearLife, resetLife } from '@/logic/life';
-import { resetScore } from '@/logic/score';
+import { useLevel } from '@/logic/level';
+import { useLife } from '@/logic/life';
+import { useScore } from '@/logic/score';
 import SingleWindow from '@/components/molecules/SingleWindow.vue';
 import { Grid } from '@/types';
 
@@ -38,11 +39,13 @@ export default defineComponent({
 
   },
   setup() {
+    useScore().reset();
+    useLife().reset();
+
     const interval = ref(1000);
     let intervalTimer: number;
     const counter = ref(0);
-
-    const levelDef = getLevelDef(getLevel());
+    const levelDef = useLevel().getDef();
 
     const grid = reactive<Grid>({
       ...levelDef,
@@ -70,13 +73,10 @@ export default defineComponent({
         play();
       }
       if (interval.value < 20) {
-        clearLife();
+        useLife().clear();
         gameOver();
       }
     });
-
-    resetScore();
-    resetLife();
 
     return {
       grid,

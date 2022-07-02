@@ -21,9 +21,9 @@ import {
   ref,
   computed,
 } from 'vue';
-import { incrementScore } from '@/logic/score';
-import { decrementLife } from '@/logic/life';
-import { getMode } from '@/logic/mode';
+import { useScore } from '@/logic/score';
+import { useLife } from '@/logic/life';
+import { useMode } from '@/logic/mode';
 
 export default defineComponent({
   name: 'SingleWindow',
@@ -39,40 +39,36 @@ export default defineComponent({
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
+    let timer: number;
     const randomImgId = ref(1);
     const whacked = ref(false);
     const randomImg = computed(
       () => (whacked.value
         ? "background-image: url('/img/whack.png')"
-        : `background-image: url('/img/${getMode()}/${randomImgId.value}.png')`),
+        : `background-image: url('/img/${useMode().get()}/${randomImgId.value}.png')`),
     );
-
-    let timer: number;
 
     const whack = () => {
       if (props.modelValue) {
         whacked.value = true;
-        incrementScore();
+        useScore().increment();
         emit('update:modelValue', false);
-        setTimeout(() => {
+        window.setTimeout(() => {
           whacked.value = false;
           clearTimeout(timer);
         }, 100);
       }
     };
 
-    watch(
-      () => props.modelValue,
-      (val: boolean) => {
-        if (val) {
-          randomImgId.value = Math.floor(Math.random() * 5 + 1);
-          timer = setTimeout(() => {
-            decrementLife();
-            emit('update:modelValue', false);
-          }, props.visibilityTime);
-        }
-      },
-    );
+    watch(() => props.modelValue, (val: boolean) => {
+      if (val) {
+        randomImgId.value = Math.floor(Math.random() * 5 + 1);
+        timer = window.setTimeout(() => {
+          useLife().decrement();
+          emit('update:modelValue', false);
+        }, props.visibilityTime);
+      }
+    });
 
     return { randomImg, whack };
   },

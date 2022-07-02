@@ -1,10 +1,14 @@
 import { ref } from 'vue';
 
-const name = ref(localStorage.getItem('whack-em-player-name') || 'Player');
+const storageKey = 'player-name';
 
-export const isUserNameSet = (): boolean => !!localStorage.getItem('whack-em-player-name');
-export const getName = (): string => name.value;
-export const setName = (n: string): void => {
-  name.value = n;
-  localStorage.setItem('whack-em-player-name', n);
-};
+const name = ref(localStorage.getItem(storageKey) || 'Player');
+
+export const usePlayer = () => ({
+  isSet: (): boolean => !!localStorage.getItem(storageKey),
+  get: (): string => name.value,
+  set: (n: string): void => {
+    name.value = n;
+    localStorage.setItem(storageKey, n);
+  },
+});

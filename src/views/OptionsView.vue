@@ -62,7 +62,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { isUserNameSet } from '@/logic/player';
+import { usePlayer } from '@/logic/player';
 import AppLogo from '@/components/atoms/AppLogo.vue';
 import PageTitle from '@/components/atoms/PageTitle.vue';
 import ConfirmationDialog from '@/components/atoms/ConfirmationDialog.vue';
@@ -82,7 +82,7 @@ export default defineComponent({
     AppLogo,
   },
   setup() {
-    const isDialogVisible = ref(!isUserNameSet());
+    const isDialogVisible = ref(!usePlayer().isSet());
 
     return { isDialogVisible, GameLevel, GameMode };
   },

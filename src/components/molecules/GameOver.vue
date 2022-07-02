@@ -20,7 +20,7 @@
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { getLife } from '@/logic/life';
+import { useLife } from '@/logic/life';
 
 export default defineComponent({
   name: 'GameOver',
@@ -29,18 +29,15 @@ export default defineComponent({
     const isVisible = ref(false);
     const router = useRouter();
 
-    watch(
-      () => getLife(),
-      (val: number) => {
-        if (val <= 0) {
-          emit('game-over');
-          isVisible.value = true;
-          setTimeout(() => {
-            router.push('/scores');
-          }, 5000);
-        }
-      },
-    );
+    watch(() => useLife().get(), (val: number) => {
+      if (val <= 0) {
+        emit('game-over');
+        isVisible.value = true;
+        window.setTimeout(() => {
+          router.push('/scores');
+        }, 5000);
+      }
+    });
 
     return { isVisible };
   },

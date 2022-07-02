@@ -1,6 +1,7 @@
 <template>
   <div
     v-if="modelValue"
+    id="confirmation_dialog"
     class="absolute top-0 left-0 h-full w-full
   text-stone-300 text-center"
   >
