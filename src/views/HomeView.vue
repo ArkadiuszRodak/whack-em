@@ -44,6 +44,7 @@ import { usePlayer } from '@/logic/player';
 import { useScore } from '@/logic/score';
 import { useLife } from '@/logic/life';
 import AppLogo from '@/components/atoms/AppLogo.vue';
+import { useMode } from '@/logic/mode';
 
 export default defineComponent({
   name: 'HomeView',
@@ -51,6 +52,7 @@ export default defineComponent({
     AppLogo,
   },
   setup() {
+    useMode().preloadImages();
     useScore().reset();
     useLife().reset();
 

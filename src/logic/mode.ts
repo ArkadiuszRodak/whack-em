@@ -15,4 +15,12 @@ export const useMode = () => ({
     mode.value = m;
     localStorage.setItem(storageKey, `${m}`); // mode as enum key
   },
+  preloadImages: (): void => {
+    const images = [];
+    for (let i = 1; i <= 5; i += 1) {
+      const img = new Image();
+      img.src = `/img/${mode.value}/${i}.png`;
+      images.push(img);
+    }
+  },
 });
