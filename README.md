@@ -4,6 +4,8 @@ Simple retro Whack A Mole like game written in Vue 3, Typescript and Tailwind CS
 It's a project made for fun and to practice frontend technologies.
 It can be played on desktops or mobile devices.
 
+![Game](/screenshots/game.jpg?raw=true "Game")
+
 ## How to play
 Set your player name in options and play. 
 Shoot building windows when a character appears to get a point.
@@ -14,3 +16,6 @@ Game is over when you loose all lives.
 In options menu you can also adjust difficulty level. 
 Building has more windows to shoot if you choose harder level.
 There is also an option to select characters appearing in building windows.
+
+![Home](/screenshots/home.jpg?raw=true "Home")
+![Options](/screenshots/options.jpg?raw=true "Options")
