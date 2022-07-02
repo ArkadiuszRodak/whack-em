@@ -10,7 +10,7 @@
       >
         <div
           :class="[currentLife >= lifeBar + 1 ? 'bg-red-500' : 'bg-stone-500']"
-          class="h-8 w-10 inline-block rounded ml-1"
+          class="life-bar h-8 w-10 inline-block rounded ml-1"
         />
       </template>
     </div>

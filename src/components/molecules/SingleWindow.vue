@@ -8,6 +8,7 @@
       <div
         v-show="modelValue"
         :style="[randomImg]"
+        :class="[modelValue? 'single-window' : '']"
         class="absolute inset-0 h-full w-full bg-no-repeat bg-bottom bg-contain"
       />
     </transition>

@@ -1,6 +1,7 @@
 <template>
   <div
     v-show="isVisible"
+    id="game_over"
     class="absolute top-0 left-0 h-full w-full z-50"
   >
     <div

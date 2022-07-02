@@ -4,7 +4,7 @@
       Score
     </div>
     <div
-      class="text-3xl text-right"
+      class="score-container text-3xl text-right"
       v-text="score"
     />
   </div>

@@ -16,7 +16,9 @@ export const useMode = () => ({
     localStorage.setItem(storageKey, `${m}`); // mode as enum key
   },
   preloadImages: (): void => {
-    const images = [];
+    const whackImg = new Image();
+    whackImg.src = '/img/whack.png';
+    const images = [whackImg];
     for (let i = 1; i <= 5; i += 1) {
       const img = new Image();
       img.src = `/img/${mode.value}/${i}.png`;
