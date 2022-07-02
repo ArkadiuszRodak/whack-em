@@ -1,6 +1,8 @@
 import { ref } from 'vue';
 import { GameLevel, LevelDef } from '@/types';
 
+const storageKey = 'level';
+
 const levelDef: Record<GameLevel, LevelDef> = {
   [GameLevel.Easy]: {
     size: 4,
@@ -20,7 +22,7 @@ const levelDef: Record<GameLevel, LevelDef> = {
 };
 
 const getLevelFromLocalStorage = (): GameLevel => {
-  const lvl = parseInt(localStorage.getItem('level') as string, 10);
+  const lvl = parseInt(localStorage.getItem(storageKey) as string, 10);
 
   return Number.isInteger(lvl) && Object.values(GameLevel).includes(lvl)
     ? (lvl as unknown as GameLevel)
@@ -29,10 +31,11 @@ const getLevelFromLocalStorage = (): GameLevel => {
 
 const level = ref<GameLevel>(getLevelFromLocalStorage());
 
-export const getLevelDef = (lvl: GameLevel): LevelDef => levelDef[lvl];
-
-export const getLevel = (): GameLevel => level.value;
-export const setLevel = (lvl: GameLevel): void => {
-  level.value = lvl;
-  localStorage.setItem('level', `${lvl}`); // level as enum key
-};
+export const useLevel = () => ({
+  getDef: (lvl?: GameLevel): LevelDef => (lvl ? levelDef[lvl] : levelDef[level.value]),
+  get: (): GameLevel => level.value,
+  set: (lvl: GameLevel): void => {
+    level.value = lvl;
+    localStorage.setItem(storageKey, `${lvl}`); // level as enum key
+  },
+});

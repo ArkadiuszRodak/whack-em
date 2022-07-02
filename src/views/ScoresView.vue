@@ -38,8 +38,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { format } from 'date-fns';
-import { getName } from '@/logic/player';
-import { getScore, resetScore } from '@/logic/score';
+import { usePlayer } from '@/logic/player';
+import { useScore } from '@/logic/score';
 import AppLogo from '@/components/atoms/AppLogo.vue';
 import PageTitle from '@/components/atoms/PageTitle.vue';
 import { Score } from '@/types';
@@ -55,14 +55,14 @@ export default defineComponent({
       ? JSON.parse(localStorage.getItem('scores') as string)
       : [];
 
-    if (getScore()) {
+    if (useScore().get()) {
       const currentScore: Score = {
-        player: getName(),
-        score: getScore(),
+        player: usePlayer().get(),
+        score: useScore().get(),
         date: format(new Date(), 'yyyy-MM-dd HH:mm'),
       };
 
-      resetScore();
+      useScore().reset();
 
       scores.push(currentScore);
       scores.sort((a: Score, b: Score): number => b.score - a.score);

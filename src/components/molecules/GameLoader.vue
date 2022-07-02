@@ -1,6 +1,7 @@
 <template>
   <div
     v-show="isVisible"
+    id="game_loader"
     class="absolute top-0 left-0 h-full w-full z-50"
   >
     <div
@@ -26,7 +27,7 @@ export default defineComponent({
     const counter = ref(6);
     let timer: number;
 
-    const countdown = () => {
+    const countdown = (): void => {
       counter.value -= 1;
 
       if (counter.value <= 0) {
@@ -34,7 +35,7 @@ export default defineComponent({
         emit('play');
         clearTimeout(timer);
       } else {
-        timer = setTimeout(countdown, 1000);
+        timer = window.setTimeout(countdown, 1000);
       }
     };
 
